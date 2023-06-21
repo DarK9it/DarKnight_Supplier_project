@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    {% load static %}
+{% load static %}
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'app/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -84,6 +84,8 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'app/js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'app/js/demo/chart-pie-demo.js' %}"></script>
+
+        {% comment %} {% block scripts %}{% endblock %} {% endcomment %}
 
 </body>
 
