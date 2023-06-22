@@ -1,7 +1,7 @@
 from django.db import models
 from suppliers.models import Fournisseur, CategorieProduit
 
-class Inscription(models.Model):
+class Produit(models.Model):
     
     nom = models.CharField()
     desscription = models.CharField()
