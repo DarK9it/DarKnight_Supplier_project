@@ -1,5 +1,5 @@
 from django.db import models
-from activites.models import Role
+from suppliers.models import Role
 from django.contrib.auth.models import User
 
 class UserRole(models.Model):
