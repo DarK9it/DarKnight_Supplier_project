@@ -4,7 +4,7 @@ from .produit_form import ProduitForm
 from .commande_form import CommandeForm
 from .detail_commande_form import DetailCommandeForm
 from .paiement_form import PaiementForm
-from .historique_form import HistoriquePrixForm
+from .historique_prix_form import HistoriquePrixForm
 from .stock_form import StockForm
 from .facture_form import FactureForm
 from .note_fournisseur_form import NoteFournisseurForm
