@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from suppliers.views import fournisseurs
+from suppliers.views import fournisseurs, home
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
