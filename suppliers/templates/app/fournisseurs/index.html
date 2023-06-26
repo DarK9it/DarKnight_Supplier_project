@@ -42,6 +42,7 @@
               <th>Nom Entreprise</th>
               <th>Adresse</th>
               <th> Tel </th>
+              <th> Email </th>
               <th>Options</th>
             </tr>
           </thead>
@@ -52,6 +53,7 @@
               <td>{{ fournisseur.nom_entreprise }}</td>
               <td>{{ fournisseur.adresse }}</td>
               <td>{{ fournisseur.telephone }}</td>
+              <td>{{ fournisseur.email }}</td>
               <td>
                 <a
                   href="{% url 'fournisseurs_edit' fournisseur.id %}"
