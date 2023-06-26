@@ -49,7 +49,7 @@
             {% for detail_commande in details_commandes %}
             <tr>
               <td>{{ detail_commande.id }}</td>
-              <td>{{ detail_commande.commande }}</td>
+              <td>{{ detail_commande.commande.nom }}</td>
               <td>{{ detail_commande.produit.nom }}</td>
               <td>{{ detail_commande.quantite }}</td>
               <td>

@@ -8,4 +8,4 @@ class Commande(models.Model):
     fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE)
     
     def __str__(self) -> str:
-        return self.id
+        return self.nom
