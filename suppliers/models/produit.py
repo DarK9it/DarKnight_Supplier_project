@@ -8,4 +8,7 @@ class Produit(models.Model):
     prix = models.FloatField()
     id_fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE)
     id_categorie = models.ForeignKey(CategorieProduit, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.nom
     
