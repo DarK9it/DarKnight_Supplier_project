@@ -7,4 +7,4 @@ class Fournisseur(models.Model):
     telephone= models.CharField(max_length=45, null=True)
     
     def __str__(self) -> str:
-        return self.nom
+        return self.nom_entreprise
