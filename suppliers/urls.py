@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from suppliers.views import categories_produits,commandes, fournisseurs, home, produits
+from suppliers.views import categories_produits,commandes, details_commandes,fournisseurs, home, produits
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
@@ -28,5 +28,11 @@ urlpatterns = [
     path('commandes/store', commandes.store, name='commandes_store'),
     path('commandes/edit/<int:id>', commandes.edit, name='commandes_edit'),
     path('commandes/delete/<int:id>', commandes.delete, name='commandes_delete'),
+
+    path('details_commandes/', details_commandes.index, name='details_commandes_index'),
+    path('details_commandes/create', details_commandes.create, name='details_commandes_create'),
+    path('details_commandes/store', details_commandes.store, name='details_commandes_store'),
+    path('details_commandes/edit/<int:id>', details_commandes.edit, name='details_commandes_edit'),
+    path('details_commandes/delete/<int:id>', details_commandes.delete, name='details_commandes_delete'),
         
 ]
