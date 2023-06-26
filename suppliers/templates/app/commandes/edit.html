@@ -20,6 +20,9 @@
                             {{ form.date_commande|as_crispy_field }}
                         </div>
                         <div class="form-group">
+                            {{ form.nom|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
                             {{ form.fournisseur|as_crispy_field }}
                         </div>
                         <button type="submit" class="btn btn-primary">Modify</button>
