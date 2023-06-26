@@ -40,10 +40,11 @@
             <tr>
               <th>Id</th>
               <th>Nom</th>
-              <th>Id_Categorie</th>
-              <th>Id_Fournisseur</th>
               <th>Description</th>
               <th>Prix</th>
+              <th>Fournisseur</th>
+              <th>Categorie</th>
+              <th>Options</th>
             </tr>
           </thead>
           <tbody>
@@ -51,10 +52,10 @@
             <tr>
               <td>{{ produit.id }}</td>
               <td>{{ produit.nom }}</td>
-              <td>{{ produit.categorie.nom_categorie }}</td>
-              <td>{{ produit.fournisseur.nom_entreprise }}</td>
               <td>{{ produit.desscription }}</td>
               <td>{{ produit.prix }}</td>
+              <td>{{ produit.fournisseur.nom_entreprise }}</td>
+              <td>{{ produit.categorie.nom_categorie }}</td>
               <td>
                 <a
                   href="{% url 'produits_edit' produit.id %}"

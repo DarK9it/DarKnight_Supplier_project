@@ -21,6 +21,6 @@ urlpatterns = [
     path('produits/create', produits.create, name='produits_create'),
     path('produits/store', produits.store, name='produits_store'),
     path('produits/edit/<int:id>', produits.edit, name='produits_edit'),
-    path('produits/delete/<int:id>', produits.delete, name='produit'),
+    path('produits/delete/<int:id>', produits.delete, name='produits_delete'),
         
 ]
