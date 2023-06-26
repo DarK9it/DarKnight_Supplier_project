@@ -1,0 +1,82 @@
+{% extends 'app/layouts/default.html' %} {% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Categories</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <a href="{% url 'categories_produits_create' %}" class="btn btn-primary"
+        >New</a
+      >
+    </div>
+    <div class="card-body">
+      {% comment %} {% if messages %}
+       {% for message in messages %} 
+       <p class="alert alert-success w-100 h-100">{{ message }} </p>
+       {% endfor %}
+      {% endif %} {% endcomment %}
+
+      {% if messages %}
+       {% for message in messages %} 
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-alert mr-1"></i>{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nom Categorie</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for categorie_produit in categories_produits %}
+            <tr>
+              <td>{{ categorie_produit.id }}</td>
+              <td>{{ categorie_produit.nom_categorie }}</td>
+              <td>
+                <a
+                  href="{% url 'categories_produits_edit' categorie_produit.id %}"
+                  class="btn btn-primary"
+                  >Edit</a
+                >
+
+                <form
+                  action="{% url 'categories_produits_delete' categorie_produit.id %}"
+                  method="post"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    onclick="return confirm('Voulez vous supprimer cette categorie ?')"
+                    class="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
+
