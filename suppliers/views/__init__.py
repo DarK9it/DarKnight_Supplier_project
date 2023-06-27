@@ -8,3 +8,4 @@ from .paiements import *
 from .historiques_prix import *
 from .stocks import *
 from .factures import *
+from .notes_fournisseurs import *
