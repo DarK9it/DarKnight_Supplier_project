@@ -59,5 +59,11 @@ urlpatterns = [
     path('factures/edit/<int:id>', factures.edit, name='factures_edit'),
     path('factures/delete/<int:id>', factures.delete, name='factures_delete'),
 
+    path('notes_fournisseurs/', notes_fournisseurs.index, name='notes_fournisseurs_index'),
+    path('notes_fournisseurs/create', notes_fournisseurs.create, name='notes_fournisseurs_create'),
+    path('notes_fournisseurs/store', notes_fournisseurs.store, name='notes_fournisseurs_store'),
+    path('notes_fournisseurs/edit/<int:id>', notes_fournisseurs.edit, name='notes_fournisseurs_edit'),
+    path('notes_fournisseurs/delete/<int:id>', notes_fournisseurs.delete, name='notes_fournisseurs_delete'),
+
 
 ]
