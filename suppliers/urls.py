@@ -53,4 +53,11 @@ urlpatterns = [
     path('stocks/edit/<int:id>', stocks.edit, name='stocks_edit'),
     path('stocks/delete/<int:id>', stocks.delete, name='stocks_delete'),
 
+    path('factures/', factures.index, name='factures_index'),
+    path('factures/create', factures.create, name='factures_create'),
+    path('factures/store', factures.store, name='factures_store'),
+    path('factures/edit/<int:id>', factures.edit, name='factures_edit'),
+    path('factures/delete/<int:id>', factures.delete, name='factures_delete'),
+
+
 ]
