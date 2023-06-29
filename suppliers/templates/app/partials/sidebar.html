@@ -35,7 +35,7 @@
         <div id="collapseFournisseurs" class="collapse" aria-labelledby="headingFournisseurs" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{% url 'fournisseurs_index' %}">Fournisseurs</a>
-                <a class="collapse-item" href="cards.html">Notes Fournisseurs</a>
+                <a class="collapse-item" href="{% url 'notes_fournisseurs_index' %}">Notes Fournisseurs</a>
             </div>
         </div>
     </li>
@@ -78,8 +78,8 @@
         </a>
         <div id="collapseCommande" class="collapse" aria-labelledby="headingCommande" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Commandes</a>
-                <a class="collapse-item" href="cards.html">Details Commande</a>
+                <a class="collapse-item" href="{% url 'commandes_index' %}">Commandes</a>
+                <a class="collapse-item" href="{% url 'details_commandes_index' %}">Details Commande</a>
             </div>
         </div>
     </li>
@@ -93,7 +93,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{% url 'paiements_index' %}">
             <i class="fas fa-fw fa-table"></i>
             <span>Paiements</span>
         </a>
@@ -115,8 +115,8 @@
         </a>
         <div id="collapseHistorique" class="collapse" aria-labelledby="headingHistorique" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Sur les prix</a>
-                <a class="collapse-item" href="cards.html">Sur les Commandes</a>
+                <a class="collapse-item" href="{% url 'historiques_prix_index' %}">Sur les prix</a>
+                <a class="collapse-item" href="{% url 'historiques_commandes_index' %}">Sur les Commandes</a>
             </div>
         </div>
     </li>
@@ -130,7 +130,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{% url 'stocks_index' %}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Stocks</span>
         </a>
@@ -145,7 +145,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{% url 'factures_index' %}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Factures</span>
         </a>
@@ -180,16 +180,17 @@
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
+     <!-- Nav Item - Tables -->
+     <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span></a>
+    </li>
+
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-    <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
 
 </ul>
