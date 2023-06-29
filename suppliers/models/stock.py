@@ -1,5 +1,5 @@
 from django.db import models
-from suppliers.models import Produit
+from suppliers.models import Produit, CategorieProduit
 
 class Stock(models.Model):
     
