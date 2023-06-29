@@ -9,6 +9,7 @@ class Produit(models.Model):
     fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE)
     categorie = models.ForeignKey(CategorieProduit, on_delete=models.CASCADE)
 
+
     def __str__(self) -> str:
         return self.nom
     
