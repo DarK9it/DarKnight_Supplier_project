@@ -71,4 +71,17 @@ urlpatterns = [
     path('historiques_commandes/edit/<int:id>', historiques_commandes.edit, name='historiques_commandes_edit'),
     path('historiques_commandes/delete/<int:id>', historiques_commandes.delete, name='historiques_commandes_delete'),
 
+    path('login/', users.user_login, name='users_login'),
+    path('logout/', users.user_logout, name='users_logout'),
+    path('users/register', users.register, name='users_register'),
+    path('users/store', users.store, name='users_store'),
+    path('users/delete<int:id>', users.delete, name='users_delete'),
+    path('users/', users.index, name='users_index'),
+    path('users/edit<int:id>', users.edit, name='users_edit'),
+    path('users/update<int:id>', users.update, name='users_update'),
+    path('users/profil',users.profil,name='users_profil'),
+    path('users/profil/edit<int:id>', users.edit_profil, name='users_edit_profil'),
+    path('users/profil/update<int:id>',users.update_profil,name='users_update_profil'),
+
+
 ]
