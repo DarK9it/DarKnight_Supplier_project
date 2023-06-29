@@ -49,7 +49,7 @@
             {% for historique_prix in historiques_prix %}
             <tr>
               <td>{{ historique_prix.id }}</td>
-              <td>{{ historique_prix.produit.nom }}</td>
+              <td>{{ historique_prix.produit.nom }} {{ historique_prix.produit.description }}</td>
               <td>{{ historique_prix.date_prix }}</td>
               <td>{{ historique_prix.prix }}</td>
               <td>
