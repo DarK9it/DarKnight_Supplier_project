@@ -42,6 +42,8 @@
               <th>Commande</th>
               <th>Montant Total</th>
               <th>Date</th>
+              <th>Mode Paiement</th>
+              <th>Numero(Chèque ou Virement)</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -52,6 +54,8 @@
               <td>{{ paiement.commande.nom }}</td>
               <td>{{ paiement.montant }}</td>
               <td>{{ paiement.date_paiement }}</td>
+              <td>{{ paiement.mode_paiement }}</td>
+              <td>{{ paiement.numero_virement }}</td>
               <td>
                 <a
                   href="{% url 'paiements_edit' paiement.id %}"
