@@ -57,7 +57,7 @@
               <td>{{ produit.description }}</td>
               <td>{{ produit.prix }}</td>
               <td>{{ produit.fournisseur.nom_entreprise }}</td>
-              <td>{{ produit.categorie.nom_categorie }}</td>
+              <td>{{ produit.delais }}</td>
               <td>
                 <a
                   href="{% url 'produits_edit' produit.id %}"
