@@ -42,6 +42,7 @@
               <th>Commande</th>
               <th>Produit</th>
               <th>Quantité</th>
+              <th>Prix Total</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -50,8 +51,9 @@
             <tr>
               <td>{{ detail_commande.id }}</td>
               <td>{{ detail_commande.commande.nom }}</td>
-              <td>{{ detail_commande.produit.nom }}</td>
+              <td>{{ detail_commande.produit.nom }} {{ detail_commande.produit.description }}</td>
               <td>{{ detail_commande.quantite }}</td>
+              <td>{{ detail_commande.prix_total }}</td>
               <td>
                 <a
                   href="{% url 'details_commandes_edit' detail_commande.id %}"
