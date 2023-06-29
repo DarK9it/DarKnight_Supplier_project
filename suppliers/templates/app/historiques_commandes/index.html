@@ -1,0 +1,85 @@
+{% extends 'app/layouts/default.html' %} {% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">History</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <a href="{% url 'historiques_commandes_create' %}" class="btn btn-primary"
+        >New</a
+      >
+    </div>
+    <div class="card-body">
+      {% comment %} {% if messages %}
+       {% for message in messages %} 
+       <p class="alert alert-success w-100 h-100">{{ message }} </p>
+       {% endfor %}
+      {% endif %} {% endcomment %}
+
+      {% if messages %}
+       {% for message in messages %} 
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-alert mr-1"></i>{{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Commande</th>
+              <th>Date Modification</th>
+              <th>Commentaire</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for historique_commande in historiques_commandes %}
+            <tr>
+              <td>{{ historique_commande.id }}</td>
+              <td>{{ historique_commande.commande.nom }}</td>
+              <td>{{ historique_commande.date_modification }}</td>
+              <td>{{ historique_commande.commentaire }}</td>
+              <td>
+                <a
+                  href="{% url 'historiques_commandes_edit' historique_commande.id %}"
+                  class="btn btn-primary"
+                  >Edit</a
+                >
+
+                <form
+                  action="{% url 'historiques_commandes_delete' historique_commande.id %}"
+                  method="post"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    onclick="return confirm('Voulez vous supprimer cette historique_commande ?')"
+                    class="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
