@@ -65,5 +65,10 @@ urlpatterns = [
     path('notes_fournisseurs/edit/<int:id>', notes_fournisseurs.edit, name='notes_fournisseurs_edit'),
     path('notes_fournisseurs/delete/<int:id>', notes_fournisseurs.delete, name='notes_fournisseurs_delete'),
 
+    path('historiques_commandes/', historiques_commandes.index, name='historiques_commandes_index'),
+    path('historiques_commandes/create', historiques_commandes.create, name='historiques_commandes_create'),
+    path('historiques_commandes/store', historiques_commandes.store, name='historiques_commandes_store'),
+    path('historiques_commandes/edit/<int:id>', historiques_commandes.edit, name='historiques_commandes_edit'),
+    path('historiques_commandes/delete/<int:id>', historiques_commandes.delete, name='historiques_commandes_delete'),
 
 ]
