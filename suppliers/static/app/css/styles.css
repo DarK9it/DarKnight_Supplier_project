@@ -1,0 +1,16 @@
+.produit {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.rouge {
+    color: red;
+}
+
+.vert {
+    color: green;
+}
+
+.gris {
+    color: goldenrod;
+}
