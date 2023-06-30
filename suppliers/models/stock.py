@@ -1,6 +1,11 @@
 from django.db import models
 from suppliers.models import Produit, CategorieProduit
 
+STATUT_CHOICES = [
+    ('disponible', 'Disponible'),
+    ('rupture_de_stock', 'Rupture de stock')
+]
+
 class Stock(models.Model):
     
     produit = models.ForeignKey(Produit, on_delete=models.CASCADE)
