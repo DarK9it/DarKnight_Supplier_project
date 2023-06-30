@@ -40,10 +40,12 @@
             <tr>
               <th>Id</th>
               <th>Commande</th>
+              <th>Numero Facture</th>
               <th>Montant Total</th>
               <th>Date</th>
               <th>Mode Paiement</th>
               <th>Numero(Chèque ou Virement)</th>
+              <th>Statut</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -52,10 +54,12 @@
             <tr>
               <td>{{ paiement.id }}</td>
               <td>{{ paiement.commande.nom }}</td>
+              <td>{{ paiement.facture.numero_facture }}</td>
               <td>{{ paiement.montant }}</td>
               <td>{{ paiement.date_paiement }}</td>
               <td>{{ paiement.mode_paiement }}</td>
               <td>{{ paiement.numero_virement }}</td>
+              <td>{{ paiement.statut }}</td>
               <td>
                 <a
                   href="{% url 'paiements_edit' paiement.id %}"
