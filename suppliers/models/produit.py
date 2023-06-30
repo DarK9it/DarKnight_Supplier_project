@@ -2,9 +2,7 @@ from django.db import models
 from suppliers.models import Fournisseur, CategorieProduit
 
 STATUT_CHOICES = [
-    ('En précommande', 'En Précommande'),
-    ('disponible', 'Disponible'),
-    ('rupture de stock', 'Rupture de stock')
+    ('En précommande', 'En Précommande')
 ]
 
 class Produit(models.Model):
