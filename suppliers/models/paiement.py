@@ -15,9 +15,9 @@ class Paiement(models.Model):
     numero_virement = models.CharField(max_length=200, null=True)
     statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default=None)
 
-    def save(self, *args, **kwargs):
-        if self.facture.statut == 'validé':
-            self.statut = 'Traité'
-        else:
-            self.statut = 'Non Traité'
-        super(Paiement, self).save(*args, **kwargs)
+    #def save(self, *args, **kwargs):
+     #   if self.facture.statut == 'validé':
+      #      self.statut = 'Traité'
+       # else:
+        #    self.statut = 'Non Traité'
+        #super(Paiement, self).save(*args, **kwargs)
