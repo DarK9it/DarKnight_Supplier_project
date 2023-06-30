@@ -9,6 +9,7 @@ class Produit(models.Model):
     fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE)
     categorie = models.ForeignKey(CategorieProduit, on_delete=models.CASCADE)
     delais = models.CharField(max_length=45, null=True)
+    statut = models.CharField(max_length=20, choices=STATUT_CHOICES, default='Disponible')
 
     def __str__(self):
         return self.nom + " " + self.description
