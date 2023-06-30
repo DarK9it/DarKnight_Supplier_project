@@ -38,8 +38,8 @@ def store(request):
         nom = request.POST['commande']
         #facture = request.POST['facture']
 
-        if Paiement.objects.filter(commande_id=nom).exists():
-            messages.error(request, 'Un paiement avec le même nom de commande existe déjà.')
+        if Facture.objects.filter(commande_id=nom).exists():
+            messages.error(request, 'Une Facture avec le même nom de commande existe déjà.')
             return redirect('/paiements')
 
         #if facture and Paiement.objects.filter(facture_id=facture).exists():
