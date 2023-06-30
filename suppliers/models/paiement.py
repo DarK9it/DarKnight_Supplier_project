@@ -8,7 +8,7 @@ STATUT_CHOICES = [
 class Paiement(models.Model):
     
     commande = models.ForeignKey(Commande, on_delete=models.CASCADE)
-    facture = models.ForeignKey(Facture, on_delete=models.CASCADE, default='None')
+    facture = models.ForeignKey(Facture, on_delete=models.CASCADE, null=True, default=None)
     montant = models.FloatField()
     date_paiement = models.DateField()
     mode_paiement = models.CharField(max_length=200, null=True)
