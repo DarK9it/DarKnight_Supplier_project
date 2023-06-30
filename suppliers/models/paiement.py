@@ -2,7 +2,8 @@ from django.db import models
 from suppliers.models import Commande, Facture
 
 STATUT_CHOICES = [
-    ('Non traité', 'Non Traité')
+    ('Non traité', 'Non Traité'),
+    ('traité', 'Traité')
 ]
 
 class Paiement(models.Model):
@@ -14,10 +15,3 @@ class Paiement(models.Model):
     mode_paiement = models.CharField(max_length=200, null=True)
     numero_virement = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=100, choices=STATUT_CHOICES, default='Non traité')
-
-    def save(self, *args, **kwargs):
-        if self.facture.statut == 'validé':
-            self.status = 'Traité'
-        else:
-            self.status = 'Non traité'
-        super().save(*args, **kwargs)
