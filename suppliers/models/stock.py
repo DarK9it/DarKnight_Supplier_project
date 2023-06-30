@@ -5,7 +5,7 @@ class Stock(models.Model):
     
     produit = models.ForeignKey(Produit, on_delete=models.CASCADE)
     quantite = models.FloatField()
-    categorie = models.ForeignKey(CategorieProduit, on_delete=models.CASCADE, null=True, default=None)
+    categorie = models.ForeignKey(CategorieProduit, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
