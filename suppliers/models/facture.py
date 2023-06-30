@@ -13,7 +13,7 @@ class Facture(models.Model):
     date_facture = models.DateField()
     montant_total = models.FloatField()
     numero_facture = models.IntegerField()
-    statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default='Non Validé')
+    statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default='Non validé')
 
     def __str__(self)-> str:
         return self.numero_facture
