@@ -59,7 +59,13 @@
               <td>{{ produit.prix }}</td>
               <td>{{ produit.fournisseur.nom_entreprise }}</td>
               <td>{{ produit.delais }}</td>
-              <td>{{ produit.statut }}</td>
+              <td>
+
+                <div class="produit {% if produit.statut == 'Rupture de stock' %}rouge{% elif produit.statut == 'Disponible' %}vert{% else %}gris{% endif %}">
+                    <p>{{ produit.statut }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'produits_edit' produit.id %}"
