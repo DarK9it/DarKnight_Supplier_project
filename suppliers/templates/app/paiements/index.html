@@ -59,7 +59,13 @@
               <td>{{ paiement.date_paiement }}</td>
               <td>{{ paiement.mode_paiement }}</td>
               <td>{{ paiement.numero_virement }}</td>
-              <td>{{ paiement.statut }}</td>
+              <td>
+
+                <div class="paiement {% if paiement.status == 'Non traité' %}rouge{% elif paiement.status == 'Traité' %}vert{% else %}gris{% endif %}">
+                    <p>{{ paiement.status }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'paiements_edit' paiement.id %}"

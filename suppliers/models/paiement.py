@@ -17,7 +17,7 @@ class Paiement(models.Model):
 
     def save(self, *args, **kwargs):
         if self.facture.statut == 'validé':
-            self.status = 'traité'
+            self.status = 'Traité'
         else:
             self.status = 'Non traité'
         super().save(*args, **kwargs)
