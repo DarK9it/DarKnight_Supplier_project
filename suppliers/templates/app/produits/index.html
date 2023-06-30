@@ -45,6 +45,7 @@
               <th>Prix</th>
               <th>Fournisseur</th>
               <th>Delais</th>
+              <th>Statut</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -58,6 +59,7 @@
               <td>{{ produit.prix }}</td>
               <td>{{ produit.fournisseur.nom_entreprise }}</td>
               <td>{{ produit.delais }}</td>
+              <td>{{ produit.statut }}</td>
               <td>
                 <a
                   href="{% url 'produits_edit' produit.id %}"
