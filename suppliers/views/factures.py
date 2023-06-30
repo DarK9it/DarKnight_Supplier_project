@@ -33,6 +33,11 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        numero_facture = request.POST['numero_facture']
+        if Facture.objects.filter(numero_facture=numero_facture).exists():
+            messages.error(request, 'Une facture avec ce numéro existe déjà.')
+            return redirect('/factures')
+
         form = FactureForm(request.POST)
         if form.is_valid():
             form.save()

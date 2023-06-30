@@ -57,7 +57,13 @@
               <td>{{ facture.date_facture }}</td>
               <td>{{ facture.montant_total }}</td>
               <td>{{ facture.numero_facture }}</td>
-              <td>{{ facture.statut }}</td>
+              <td>
+
+                <div class="facture {% if facture.statut == 'Non validé' %}rouge{% elif facture.statut == 'validé' %}vert{% else %}gris{% endif %}">
+                    <p>{{ facture.statut }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'factures_edit' facture.id %}"
