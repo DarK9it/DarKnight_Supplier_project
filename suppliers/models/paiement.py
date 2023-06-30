@@ -2,7 +2,6 @@ from django.db import models
 from suppliers.models import Commande, Facture
 
 STATUT_CHOICES = [
-    ('traité', 'Traité'),
     ('Non traité', 'Non Traité')
 ]
 
