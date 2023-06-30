@@ -15,5 +15,5 @@ class Facture(models.Model):
     numero_facture = models.IntegerField()
     statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default='Non validé')
 
-    def __str__(self):
+    def __str__(self)-> str:
         return self.numero_facture
