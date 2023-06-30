@@ -3,6 +3,10 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 
 from suppliers.models import Paiement
+from suppliers.models import Commande
+from suppliers.forms import CommandeForm
+from suppliers.models import Facture
+from suppliers.forms import FactureForm
 from suppliers.forms import PaiementForm
 from django.contrib.auth.decorators import  login_required
 
@@ -33,6 +37,22 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        nom = request.POST['commande']
+        facture = request.POST['facture']
+
+        if Paiement.objects.filter(commande_id=nom).exists():
+            messages.error(request, 'Un paiement avec le même nom de commande existe déjà.')
+            return redirect('/paiements')
+
+        if facture and Paiement.objects.filter(facture_id=facture).exists():
+            messages.error(request, 'Un paiement avec le même numéro de facture existe déjà.')
+            return redirect('/paiements')
+
+
+        numero_virement = request.POST['numero_virement']
+        if Paiement.objects.filter(numero_virement=numero_virement).exists():
+            messages.error(request, 'Un Paiement avec ce numero virement existe déjà.')
+            return redirect('/paiements')
         form = PaiementForm(request.POST)
         if form.is_valid():
             form.save()
