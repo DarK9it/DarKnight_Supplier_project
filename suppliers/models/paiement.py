@@ -13,7 +13,7 @@ class Paiement(models.Model):
     date_paiement = models.DateField()
     mode_paiement = models.CharField(max_length=200, null=True)
     numero_virement = models.CharField(max_length=200, null=True)
-    statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default='Non traité')
+    statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default=None)
 
     def save(self, *args, **kwargs):
         if self.facture.statut == 'validé':
