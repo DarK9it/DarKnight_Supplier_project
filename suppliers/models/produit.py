@@ -1,6 +1,11 @@
 from django.db import models
 from suppliers.models import Fournisseur, CategorieProduit
 
+STATUT_CHOICES = [
+    ('disponible', 'Disponible'),
+    ('rupture_de_stock', 'Rupture de stock')
+]
+
 class Produit(models.Model):
     
     nom = models.CharField(max_length=45, null=True)
