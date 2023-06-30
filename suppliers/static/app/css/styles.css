@@ -14,3 +14,12 @@
 .gris {
     color: goldenrod;
 }
+
+.commande {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.noir {
+    color: black;
+}

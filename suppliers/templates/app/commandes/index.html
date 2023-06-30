@@ -42,6 +42,7 @@
               <th>Nom</th>
               <th>Date</th>
               <th>Fournisseur</th>
+              <th>Statut</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -52,6 +53,13 @@
               <td>{{ commande.nom }}</td>
               <td>{{ commande.date_commande }}</td>
               <td>{{ commande.fournisseur.nom_entreprise }}</td>
+              <td>
+
+                <div class="commande {% if commande.statut == 'Livré en retard' %}rouge{% elif commande.statut == 'Livré à temps' %}vert{% elif commande.statut == 'En attente de traitement' %}noir{% else %}gris{% endif %}">
+                    <p>{{ commande.statut }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'commandes_edit' commande.id %}"
