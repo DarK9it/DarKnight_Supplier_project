@@ -33,6 +33,11 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        nom_categorie = request.POST['nom_categorie']
+        if CategorieProduit.objects.filter(nom_categorie=nom_categorie).exists():
+            messages.error(request, 'Une catégorie avec ce nom existe déjà.')
+            return redirect('/categories_produits')
+
         form = CategorieProduitForm(request.POST)
         if form.is_valid():
             form.save()
