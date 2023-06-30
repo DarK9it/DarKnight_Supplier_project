@@ -12,7 +12,7 @@ class Facture(models.Model):
     fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE, null=True, default=None)
     date_facture = models.DateField()
     montant_total = models.FloatField()
-    numero_facture = models.IntegerField()
+    numero_facture = models.CharField(max_length=45, null=True)
     statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default='Non validé')
 
     def __str__(self)-> str:
