@@ -55,7 +55,7 @@
               <td>{{ commande.fournisseur.nom_entreprise }}</td>
               <td>
 
-                <div class="commande {% if commande.statut == 'Livré En Retard' %}rouge{% elif commande.statut == 'Livré A Temps' %}vert{% elif commande.statut == 'En Attente De Traitement' %}noir{% else %}gris{% endif %}">
+                <div class="commande {% if commande.statut == 'Livré en retard' %}rouge{% elif commande.statut == 'Livré à temps' %}vert{% elif commande.statut == 'En attente de traitement' %}noir{% else %}gris{% endif %}">
                     <p>{{ commande.statut }}</p>
                 </div>
                 
