@@ -78,4 +78,11 @@ urlpatterns = [
     path('droits/update<int:id>', droits.update, name='droits_update'),
     path('droits/delete/<int:id>', droits.delete, name="droits_delete"),
 
+    path('roles/', roles.index, name='roles_index'),
+    path('roles/create', roles.create, name='roles_create'),
+    path('roles/store', roles.store, name='roles_store'),
+    path('roles/edit<int:id>', roles.edit, name='roles_edit'),
+    path('roles/update<int:id>', roles.update, name='roles_update'),
+    path('roles/delete<int:id>', roles.delete, name='roles_delete'),
+
 ]

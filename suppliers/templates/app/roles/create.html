@@ -5,27 +5,21 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Remark</h1>
+    <h1 class="h3 mb-2 text-gray-800">Role</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit Remark</h6>
+            <h6 class="m-0 font-weight-bold text-primary">New Role</h6>
         </div>
         <div class="card-body">
                 <div class="container">
-                    <form action="" method="post">
+                    <form action="{% url 'roles_store' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            {{ form.fournisseur|as_crispy_field }}
+                            {{ form.nom|as_crispy_field }}
                         </div>
-                        <div class="form-group">
-                            {{ form.note|as_crispy_field }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.commentaire|as_crispy_field }}
-                        </div>
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
         </div>
