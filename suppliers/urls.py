@@ -71,4 +71,11 @@ urlpatterns = [
     path('historiques_commandes/edit/<int:id>', historiques_commandes.edit, name='historiques_commandes_edit'),
     path('historiques_commandes/delete/<int:id>', historiques_commandes.delete, name='historiques_commandes_delete'),
 
+    path('droits/',droits.index, name='droits_index' ),
+    path('droits/create', droits.create, name='droits_create'),
+    path('droits/store', droits.store, name='droits_store'),
+    path('droits/edit<int:id>', droits.edit, name='droits_edit'),
+    path('droits/update<int:id>', droits.update, name='droits_update'),
+    path('droits/delete/<int:id>', droits.delete, name="droits_delete"),
+
 ]

@@ -10,3 +10,4 @@ from .stocks import *
 from .factures import *
 from .notes_fournisseurs import *
 from .historiques_commandes import *
+from .droits import *
