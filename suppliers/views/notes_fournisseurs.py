@@ -33,6 +33,12 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        nom = request.POST['fournisseur']
+
+        if NoteFournisseur.objects.filter(fournisseur_id=nom).exists():
+            messages.error(request, 'La note de ce Fournisseur existe déjà.')
+            return redirect('/notes_fournisseurs')
+
         form = NoteFournisseurForm(request.POST)
         if form.is_valid():
             form.save()
