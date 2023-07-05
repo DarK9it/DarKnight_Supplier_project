@@ -71,7 +71,6 @@ urlpatterns = [
     path('historiques_commandes/edit/<int:id>', historiques_commandes.edit, name='historiques_commandes_edit'),
     path('historiques_commandes/delete/<int:id>', historiques_commandes.delete, name='historiques_commandes_delete'),
 
-<<<<<<< HEAD
     path('login/', users.user_login, name='users_login'),
     path('logout/', users.user_logout, name='users_logout'),
     path('users/register', users.register, name='users_register'),
@@ -84,7 +83,6 @@ urlpatterns = [
     path('users/profil/edit<int:id>', users.edit_profil, name='users_edit_profil'),
     path('users/profil/update<int:id>',users.update_profil,name='users_update_profil'),
 
-=======
     path('droits/',droits.index, name='droits_index' ),
     path('droits/create', droits.create, name='droits_create'),
     path('droits/store', droits.store, name='droits_store'),
@@ -105,6 +103,5 @@ urlpatterns = [
     path('roles_droits/edit<int:id>', roles_droits.edit, name='roles_droits_edit'),
     path('roles_droits/update<int:id>', roles_droits.update, name='roles_droits_update'),
     path('roles_droits/delete<int:id>', roles_droits.delete, name='roles_droits_delete'),
->>>>>>> bf6e51e0e3a0a7f954ce39bf5fee9f2e2259d64b
 
 ]
