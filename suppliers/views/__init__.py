@@ -12,3 +12,4 @@ from .notes_fournisseurs import *
 from .historiques_commandes import *
 from .droits import *
 from .roles import *
+from .roles_droits import *
