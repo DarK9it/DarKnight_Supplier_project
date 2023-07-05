@@ -6,7 +6,7 @@ from suppliers.models import Fournisseur
 from suppliers.forms import FournisseurForm
 from django.contrib.auth.decorators import  login_required
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 
 def index(request):
     assert isinstance(request, HttpRequest)
@@ -18,7 +18,7 @@ def index(request):
             'fournisseurs': fournisseurs
         }
     )
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 
 def create(request):
     form = FournisseurForm()
@@ -29,7 +29,7 @@ def create(request):
             'form': form
         }
     )
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 
 def store(request):
     if request.method == 'POST':
@@ -39,7 +39,7 @@ def store(request):
         messages.success(request, "Fournisseur has been saved successfully !")
         return redirect('/fournisseurs')
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 
 def edit(request, id):
     assert isinstance(request, HttpRequest)
@@ -67,7 +67,7 @@ def edit(request, id):
         messages.success(request, "Fournisseur has been updated successfully !")
         return redirect('/fournisseurs')
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 
 def delete(request, id):
     fournisseur = Fournisseur.objects.get(pk=id)

@@ -13,7 +13,7 @@ from django.shortcuts import render, get_object_or_404
 
 
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 def index(request):
     users = User.objects.all()
     return render(
@@ -24,7 +24,7 @@ def index(request):
         }
 
     )
-@login_required(login_url='/login')    
+#@login_required(login_url='/login')    
 def profil(request):
     users=User.objects.all()
     return render(
@@ -93,7 +93,7 @@ def user_logout(request):
 
 
 # Show register form
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 def register(request):
     form = UserForm()
     return render(
@@ -106,7 +106,7 @@ def register(request):
     
     
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 # Register a new user    
 def store(request):
     if request.method == 'POST':
@@ -117,7 +117,7 @@ def store(request):
     
     
     
-@login_required(login_url='/login')    
+#@login_required(login_url='/login')    
 # Remove a user    
 def delete(request, id):
     user = User.objects.get(pk=id)
@@ -126,7 +126,7 @@ def delete(request, id):
     return redirect('/users')
 
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 def edit_profil(request, id):
     assert isinstance(request, HttpRequest)
     if request.method == 'GET':
@@ -145,7 +145,7 @@ def edit_profil(request, id):
 
       
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 def edit(request, id):
     assert isinstance(request, HttpRequest)
     if request.method == 'GET':
@@ -163,7 +163,7 @@ def edit(request, id):
         )   
         
         
-@login_required(login_url='/login')        
+#@login_required(login_url='/login')        
 # Update a user
 def update(request, id):
     user = get_object_or_404(User, id=id)
