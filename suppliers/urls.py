@@ -71,6 +71,7 @@ urlpatterns = [
     path('historiques_commandes/edit/<int:id>', historiques_commandes.edit, name='historiques_commandes_edit'),
     path('historiques_commandes/delete/<int:id>', historiques_commandes.delete, name='historiques_commandes_delete'),
 
+<<<<<<< HEAD
     path('login/', users.user_login, name='users_login'),
     path('logout/', users.user_logout, name='users_logout'),
     path('users/register', users.register, name='users_register'),
@@ -83,5 +84,27 @@ urlpatterns = [
     path('users/profil/edit<int:id>', users.edit_profil, name='users_edit_profil'),
     path('users/profil/update<int:id>',users.update_profil,name='users_update_profil'),
 
+=======
+    path('droits/',droits.index, name='droits_index' ),
+    path('droits/create', droits.create, name='droits_create'),
+    path('droits/store', droits.store, name='droits_store'),
+    path('droits/edit<int:id>', droits.edit, name='droits_edit'),
+    path('droits/update<int:id>', droits.update, name='droits_update'),
+    path('droits/delete/<int:id>', droits.delete, name="droits_delete"),
+
+    path('roles/', roles.index, name='roles_index'),
+    path('roles/create', roles.create, name='roles_create'),
+    path('roles/store', roles.store, name='roles_store'),
+    path('roles/edit<int:id>', roles.edit, name='roles_edit'),
+    path('roles/update<int:id>', roles.update, name='roles_update'),
+    path('roles/delete<int:id>', roles.delete, name='roles_delete'),
+
+    path('roles_droits/', roles_droits.index, name='roles_droits_index'),
+    path('roles_droits/create', roles_droits.create, name='roles_droits_create'),
+    path('roles_droits/store', roles_droits.store, name='roles_droits_store'),
+    path('roles_droits/edit<int:id>', roles_droits.edit, name='roles_droits_edit'),
+    path('roles_droits/update<int:id>', roles_droits.update, name='roles_droits_update'),
+    path('roles_droits/delete<int:id>', roles_droits.delete, name='roles_droits_delete'),
+>>>>>>> bf6e51e0e3a0a7f954ce39bf5fee9f2e2259d64b
 
 ]

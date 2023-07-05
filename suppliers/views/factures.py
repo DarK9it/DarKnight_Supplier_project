@@ -4,6 +4,8 @@ from django.contrib import messages
 
 from suppliers.models import Facture
 from suppliers.forms import FactureForm
+from suppliers.models import Paiement
+from suppliers.forms import PaiementForm
 from django.contrib.auth.decorators import  login_required
 
 #@login_required(login_url='/login')
@@ -33,6 +35,22 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        nom = request.POST['commande']
+        #facture = request.POST['facture']
+
+        if Facture.objects.filter(commande_id=nom).exists():
+            messages.error(request, 'Une Facture avec le même nom de commande existe déjà.')
+            return redirect('/paiements')
+
+        #if facture and Paiement.objects.filter(facture_id=facture).exists():
+            #messages.error(request, 'Un paiement avec le même numéro de facture existe déjà.')
+            #return redirect('/paiements')
+
+        numero_facture = request.POST['numero_facture']
+        if Facture.objects.filter(numero_facture=numero_facture).exists():
+            messages.error(request, 'Une facture avec ce numéro existe déjà.')
+            return redirect('/factures')
+
         form = FactureForm(request.POST)
         if form.is_valid():
             form.save()

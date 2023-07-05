@@ -12,21 +12,24 @@
       >
     </div>
     <div class="card-body">
-      {% comment %} {% if messages %}
-       {% for message in messages %} 
-       <p class="alert alert-success w-100 h-100">{{ message }} </p>
-       {% endfor %}
-      {% endif %} {% endcomment %}
-
       {% if messages %}
-       {% for message in messages %} 
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="fas fa-alert mr-1"></i>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% endfor %}
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% elif message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-times-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endif %}
 
       <div class="table-responsive">
@@ -40,8 +43,11 @@
             <tr>
               <th>Id</th>
               <th>Commande</th>
-              <th>Date</th>
+              <th>Fournisseur</th>
+              <th>Date Emmission</th>
               <th>Montant Total</th>
+              <th>Numero Facture</th>
+              <th>Status</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -50,8 +56,17 @@
             <tr>
               <td>{{ facture.id }}</td>
               <td>{{ facture.commande.nom }}</td>
+              <td>{{ facture.fournisseur.nom_entreprise }}</td>
               <td>{{ facture.date_facture }}</td>
               <td>{{ facture.montant_total }}</td>
+              <td>{{ facture.numero_facture }}</td>
+              <td>
+
+                <div class="facture {% if facture.statut == 'Non validé' %}rouge{% elif facture.statut == 'validé' %}vert{% else %}gris{% endif %}">
+                    <p>{{ facture.statut }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'factures_edit' facture.id %}"

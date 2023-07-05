@@ -33,6 +33,12 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        nom = request.POST['produit']
+
+        if Stock.objects.filter(produit_id=nom).exists():
+            messages.error(request, 'Un produit avec le même nom existe déjà dans le stock.')
+            return redirect('/stocks')
+
         form = StockForm(request.POST)
         if form.is_valid():
             form.save()

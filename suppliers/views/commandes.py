@@ -33,6 +33,11 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        nom = request.POST['nom']
+        if Commande.objects.filter(nom=nom).exists():
+            messages.error(request, 'Une Commande avec ce nom existe déjà.')
+            return redirect('/commandes')
+
         form = CommandeForm(request.POST)
         if form.is_valid():
             form.save()

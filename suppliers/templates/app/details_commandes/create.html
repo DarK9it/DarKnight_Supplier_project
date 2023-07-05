@@ -25,7 +25,10 @@
                         <div class="form-group">
                             {{ form.quantite|as_crispy_field }}
                         </div>
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <div class="form-group">
+                            {{ form.prix_total|as_crispy_field }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
         </div>

@@ -12,21 +12,24 @@
       >
     </div>
     <div class="card-body">
-      {% comment %} {% if messages %}
-       {% for message in messages %} 
-       <p class="alert alert-success w-100 h-100">{{ message }} </p>
-       {% endfor %}
-      {% endif %} {% endcomment %}
-
       {% if messages %}
-       {% for message in messages %} 
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="fas fa-alert mr-1"></i>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% endfor %}
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% elif message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-times-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endif %}
 
       <div class="table-responsive">
@@ -40,10 +43,12 @@
             <tr>
               <th>Id</th>
               <th>Nom</th>
+              <th>Categorie</th>
               <th>Description</th>
               <th>Prix</th>
               <th>Fournisseur</th>
-              <th>Categorie</th>
+              <th>Delais</th>
+              <th>Statut</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -52,10 +57,18 @@
             <tr>
               <td>{{ produit.id }}</td>
               <td>{{ produit.nom }}</td>
+              <td>{{ produit.categorie.nom_categorie }}</td>
               <td>{{ produit.description }}</td>
               <td>{{ produit.prix }}</td>
               <td>{{ produit.fournisseur.nom_entreprise }}</td>
-              <td>{{ produit.categorie.nom_categorie }}</td>
+              <td>{{ produit.delais }}</td>
+              <td>
+
+                <div class="produit {% if produit.statut == 'Rupture de stock' %}rouge{% elif produit.statut == 'Disponible' %}vert{% else %}gris{% endif %}">
+                    <p>{{ produit.statut }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'produits_edit' produit.id %}"

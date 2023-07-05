@@ -12,21 +12,24 @@
       >
     </div>
     <div class="card-body">
-      {% comment %} {% if messages %}
-       {% for message in messages %} 
-       <p class="alert alert-success w-100 h-100">{{ message }} </p>
-       {% endfor %}
-      {% endif %} {% endcomment %}
-
       {% if messages %}
-       {% for message in messages %} 
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="fas fa-alert mr-1"></i>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% endfor %}
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% elif message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-times-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endif %}
 
       <div class="table-responsive">
@@ -40,8 +43,12 @@
             <tr>
               <th>Id</th>
               <th>Commande</th>
+              <th>Numero Facture</th>
               <th>Montant Total</th>
               <th>Date</th>
+              <th>Mode Paiement</th>
+              <th>Numero(Chèque ou Virement)</th>
+              <th>Statut</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -50,8 +57,18 @@
             <tr>
               <td>{{ paiement.id }}</td>
               <td>{{ paiement.commande.nom }}</td>
+              <td>{{ paiement.facture.numero_facture }}</td>
               <td>{{ paiement.montant }}</td>
               <td>{{ paiement.date_paiement }}</td>
+              <td>{{ paiement.mode_paiement }}</td>
+              <td>{{ paiement.numero_virement }}</td>
+              <td>
+
+                <div class="paiement {% if paiement.status == 'Non traité' %}rouge{% elif paiement.status == 'Traité' %}vert{% else %}gris{% endif %}">
+                    <p>{{ paiement.status }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'paiements_edit' paiement.id %}"

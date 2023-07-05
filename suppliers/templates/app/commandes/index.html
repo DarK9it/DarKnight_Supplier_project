@@ -12,21 +12,24 @@
       >
     </div>
     <div class="card-body">
-      {% comment %} {% if messages %}
-       {% for message in messages %} 
-       <p class="alert alert-success w-100 h-100">{{ message }} </p>
-       {% endfor %}
-      {% endif %} {% endcomment %}
-
       {% if messages %}
-       {% for message in messages %} 
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="fas fa-alert mr-1"></i>{{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% endfor %}
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% elif message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-times-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endif %}
 
       <div class="table-responsive">
@@ -42,6 +45,7 @@
               <th>Nom</th>
               <th>Date</th>
               <th>Fournisseur</th>
+              <th>Statut</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -52,6 +56,13 @@
               <td>{{ commande.nom }}</td>
               <td>{{ commande.date_commande }}</td>
               <td>{{ commande.fournisseur.nom_entreprise }}</td>
+              <td>
+
+                <div class="commande {% if commande.statut == 'Livré en retard' %}rouge{% elif commande.statut == 'Livré à temps' %}vert{% elif commande.statut == 'En attente de traitement' %}noir{% else %}gris{% endif %}">
+                    <p>{{ commande.statut }}</p>
+                </div>
+                
+              </td>
               <td>
                 <a
                   href="{% url 'commandes_edit' commande.id %}"

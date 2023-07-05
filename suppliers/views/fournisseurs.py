@@ -33,6 +33,11 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        nom_entreprise = request.POST['nom_entreprise']
+        if Fournisseur.objects.filter(nom_entreprise=nom_entreprise).exists():
+            messages.error(request, 'Un Fournisseur avec ce nom existe déjà.')
+            return redirect('/fournisseurs')
+
         form = FournisseurForm(request.POST)
         if form.is_valid():
             form.save()

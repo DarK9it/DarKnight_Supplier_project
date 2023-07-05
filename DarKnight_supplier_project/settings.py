@@ -90,6 +90,9 @@ DATABASES = {
         'PASSWORD' : '',
         'PORT' : '3306',
         'USER' : 'root',
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        },
     }
 }
 
