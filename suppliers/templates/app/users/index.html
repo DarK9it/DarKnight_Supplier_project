@@ -6,7 +6,31 @@
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <a href="{% url 'users_register' %}" class="btn btn-primary"
+        >New</a
+      >
+    </div>
     <div class="card-body">
+      {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% elif message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-times-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
       <div class="table-responsive">
         <table
           class="table table-bordered"
@@ -34,13 +58,13 @@
               <td>{{ user.username }}</td>
               <td>
                 <a
-                  href="#"
-                  class="btn btn-secondary"
-                  >View Details</a
+                  href="{% url 'users_edit' user.id %}"
+                  class="btn btn-primary"
+                  >Edit</a
                 >
 
                 <form
-                  action="#"
+                  action="{% url 'users_delete' user.id %}"
                   method="post"
                 >
                   {% csrf_token %}

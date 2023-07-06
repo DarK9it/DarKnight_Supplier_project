@@ -21,16 +21,6 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                        {% if messages %}
-                                        {% for message in messages %} 
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            <i class="fas fa-alert mr-1"></i>{{ message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        {% endfor %}
-                                        {% endif %}
                                     </div>
                                     <form class="user" action="" method="post">
                                         {% csrf_token %}
@@ -48,9 +38,9 @@
                                         </button>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
+                                    <!-- <div class="text-center">
                                         <a class="small" href="{% url 'users_register' %}">Create an Account!</a>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
