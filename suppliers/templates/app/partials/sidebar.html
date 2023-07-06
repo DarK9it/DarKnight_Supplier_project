@@ -168,7 +168,7 @@
         </a>
         <div id="collapseUtilisateurs" class="collapse" aria-labelledby="headingUtilisateurs" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Utilisateurs</a>
+                <a class="collapse-item" href="{% url 'users_index' %}">Utilisateurs</a>
                 <a class="collapse-item" href="{% url 'roles_index' %}">Roles</a>
                 <a class="collapse-item" href="{% url 'droits_index' %}">Droits</a>
                 <a class="collapse-item" href="#">Utilisateur_Role</a>
@@ -182,7 +182,7 @@
 
      <!-- Nav Item - Tables -->
      <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'users_logout' %}">
             <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span></a>
     </li>

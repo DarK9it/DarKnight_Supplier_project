@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
-#@login_required(login_url= "/login")
+@login_required(login_url= "/login")
 def index(request):
     assert isinstance(request, HttpRequest)
     droits = Droit.objects.all()
@@ -18,7 +18,7 @@ def index(request):
         }
     )
 
-#@login_required(login_url= "/login")   
+@login_required(login_url= "/login")   
 def create(request):
     form = DroitForm()
     return render(
@@ -29,7 +29,7 @@ def create(request):
         }
     )
     
-#@login_required(login_url= "/login")   
+@login_required(login_url= "/login")   
 def store(request):
     assert isinstance(request, HttpRequest)
     if request.method == 'POST':
@@ -46,7 +46,7 @@ def store(request):
     return redirect('/droits')
 
 
-#@login_required(login_url= "/login")
+@login_required(login_url= "/login")
 def edit(request, id):
     assert isinstance(request, HttpRequest)
     if request.method == 'GET':
@@ -65,7 +65,7 @@ def edit(request, id):
         
         
 # Update a Droit
-#@login_required(login_url= "/login")
+@login_required(login_url= "/login")
 def update(request, id):
     if request.method == 'POST':
         if id == 0:
@@ -80,7 +80,7 @@ def update(request, id):
     
 
 # Remove a Droit
-#@login_required(login_url= "/login")    
+@login_required(login_url= "/login")    
 def delete(request, id):
     assert isinstance(request, HttpRequest)
     droit = Droit.objects.get(pk=id)

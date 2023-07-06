@@ -1,0 +1,71 @@
+
+{% extends 'app/layouts/default.html' %} 
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+
+    {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% elif message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-times-circle mr-1"></i>{{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
+    {% endif %} 
+  
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4"><h3 style="text-align: center;color: rgb(0, 0, 0);padding-top: 0.5cm;"> Tes Informations Personnelles</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+          
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Email </th>
+              <th>Nom d'Utilisateur</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+            <tr>
+             
+              <td>{{ user.first_name }}</td>
+              <td>{{ user.last_name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.username }}</td>
+              <td class="col-md-2 d-none d-md-table-cell">                      
+                <div class="fas fa-user-edit">
+                  <button type="submit" onclick="return confirm('Voulez-vous vraiment modifier les infos ?')" ><a href="{% url 'users_edit_profil' user.id %}" class="btn btn-secondary d-inline mr-2"><i class="bi bi-pencil-square">Edit</i></a></button>
+                   
+                </div>                 
+             </td>            
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
+
+{% endblock %}
