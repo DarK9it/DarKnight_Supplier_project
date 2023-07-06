@@ -113,6 +113,7 @@ def store(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
+        messages.success(request, "User has been saved successfully !")
         return redirect('/users')
     
     
