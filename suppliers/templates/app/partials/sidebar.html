@@ -17,7 +17,10 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-
+{% for i in request.session.permission %}
+    
+   {% if i == 1 %}
+        
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -39,7 +42,11 @@
             </div>
         </div>
     </li>
+   {% endif %}
 
+   
+   {% if i == 3 %}
+    
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -61,6 +68,10 @@
             </div>
         </div>
     </li>
+   {% endif %}
+
+   
+   {% if i == 4 %}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -83,7 +94,10 @@
             </div>
         </div>
     </li>
-
+   {% endif %}
+   
+   {% if i == 5 %}
+    
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -98,6 +112,9 @@
             <span>Paiements</span>
         </a>
     </li>
+   {% endif %}
+   
+   {% if i == 6 %}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -120,7 +137,10 @@
             </div>
         </div>
     </li>
-
+   {% endif %}
+   
+   {% if i == 7 %}
+    
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -135,7 +155,10 @@
             <span>Stocks</span>
         </a>
     </li>
-
+   {% endif %}
+   
+   {% if i == 8 %}
+    
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -150,6 +173,9 @@
             <span>Factures</span>
         </a>
     </li>
+   {% endif %}
+   
+   {% if i == 9 %}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -176,7 +202,10 @@
             </div>
         </div>
     </li>
-
+   {% endif %}
+    
+{% endfor %}
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
