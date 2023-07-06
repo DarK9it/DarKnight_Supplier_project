@@ -14,3 +14,4 @@ from .users import *
 from .droits import *
 from .roles import *
 from .roles_droits import *
+from .users_roles import *

@@ -103,5 +103,11 @@ urlpatterns = [
     path('roles_droits/edit<int:id>', roles_droits.edit, name='roles_droits_edit'),
     path('roles_droits/update<int:id>', roles_droits.update, name='roles_droits_update'),
     path('roles_droits/delete<int:id>', roles_droits.delete, name='roles_droits_delete'),
-
+    
+    path('users_roles/', users_roles.index, name='users_roles_index'),
+    path('users_roles/create', users_roles.create, name='users_roles_create'),
+    path('users_roles/store', users_roles.store, name='users_roles_store'),
+    path('users_roles/delete/<int:id>', users_roles.delete, name='users_roles_delete'),
+    path('users_roles/edit/<int:id>', users_roles.edit, name='users_roles_edit'),
+    path('users_roles/update/<int:id>', users_roles.update, name='users_roles_update'), 
 ]
