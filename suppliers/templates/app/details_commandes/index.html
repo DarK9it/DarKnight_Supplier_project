@@ -43,6 +43,7 @@
             <tr>
               <th>Id</th>
               <th>Commande</th>
+              <th>Categorie</th>
               <th>Produit</th>
               <th>Quantité</th>
               <th>Prix Total</th>
@@ -54,6 +55,7 @@
             <tr>
               <td>{{ detail_commande.id }}</td>
               <td>{{ detail_commande.commande.nom }}</td>
+              <td>{{ detail_commande.categorie.nom_categorie }}</td>
               <td>{{ detail_commande.produit.nom }} {{ detail_commande.produit.description }}</td>
               <td>{{ detail_commande.quantite }}</td>
               <td>{{ detail_commande.prix_total }}</td>
