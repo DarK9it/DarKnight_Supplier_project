@@ -1,2 +1,4 @@
 venv/
 DarKnight_supplier_project/__pycache__
+suppliers/static/app/plugins1/
+suppliers/static/app/vendor1/
