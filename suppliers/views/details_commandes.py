@@ -1,7 +1,8 @@
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from django.contrib import messages
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from suppliers.models import DetailCommande
 from suppliers.forms import DetailCommandeForm
 from django.contrib.auth.decorators import  login_required
@@ -33,6 +34,10 @@ def create(request):
 
 def store(request):
     if request.method == 'POST':
+        commande = request.POST['commande']
+        if DetailCommande.objects.filter(commande=commande).exists():
+            messages.error(request, 'Une Commande avec ce nom existe déjà.')
+            return redirect('/details_commandes')
         form = DetailCommandeForm(request.POST)
         if form.is_valid():
             form.save()
@@ -74,3 +79,35 @@ def delete(request, id):
     detail_commande.delete()
     messages.success(request, "Order Detail has been removed successfully !")
     return redirect('/details_commandes')
+
+@login_required(login_url='/login')
+
+def getProducts(request):
+    categorie_id = request.GET.get('categorie_id')
+    produits = Produit.objects.filter(categorie_id = categorie_id).order_by('nom')
+    return render(
+        request,
+        'app/details_commandes/getProducts.html',
+        {
+            'produits': produits
+        }
+    )
+
+@login_required(login_url='/login')
+
+def getUnitPrice(request):
+    id_produit = request.GET.get('id_produit')
+    produit = Produit.objects.get(pk=id_produit)
+    return render(
+        request,
+        'app/details_commandes/getUnitPrice.html',
+        {
+            'produit': produit
+        }
+    )
+
+def get_produits_by_categorie(request):
+    categorie_id = request.GET.get('categorie_id')
+    produits = Produit.objects.filter(categorie_id=categorie_id)
+    data = [{'id': p.id, 'nom': p.nom} for p in produits]
+    return JsonResponse(data, safe=False)

@@ -5,12 +5,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Products</h1>
+    <h1 class="h3 mb-2 text-gray-800">Orders Details</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">New Product</h6>
+            <h6 class="m-0 font-weight-bold text-primary">New Order Details</h6>
         </div>
         <div class="card-body">
                 <div class="container">
@@ -20,10 +20,23 @@
                             {{ form.commande|as_crispy_field }}
                         </div>
                         <div class="form-group">
-                            {{ form.categorie|as_crispy_field }}
+                            <label>Catégorie</label>
+                            <select name="categorie" id="id_categorie" class="form-control">
+                                <option value="">---------</option>
+                                {% for categorie in categories_produits %}
+                                <option value="{{ categorie.id }}">{{ categorie.nom_categorie }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group">
-                            {{ form.produit|as_crispy_field }}
+                            <label>Produit</label>
+                            <select name="produit" id="id_produit" class="form-control">
+                                <option value="">---------</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Prix Produit</label>
+                            <input type="text" name="unit_price" value="" id="unit_price" class="form-control">
                         </div>
                         <div class="form-group">
                             {{ form.quantite|as_crispy_field }}
@@ -33,6 +46,27 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
+
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        $(function () {
+                            $("#id_categorie").on("change", function () {
+                                var categorie_id = $(this).val();
+                                $.get(
+                                    "/get_produits_by_categorie/",
+                                    {"categorie_id": categorie_id},
+                                    function (data) {
+                                        var options = '<option value="">---------</option>';
+                                        data.forEach(function (produit) {
+                                            options += '<option value="' + produit.id + '">' + produit.nom + '</option>';
+                                        });
+                                        $("#id_produit").html(options);
+                                    }
+                                );
+                            });
+                        });
+                    </script>
+
                 </div>
         </div>
     </div>

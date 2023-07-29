@@ -23,7 +23,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{nbre_fournisseur}}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            <i class="fa fa-truck" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{nbre_categorie}}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fa fa-tags" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -49,33 +49,27 @@
         </div>
 
         <!-- Earnings (Monthly) Card Example -->
-        <!--<div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Notes Moyenne Des Fournisseurs
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ note_moyenne }}</div>
                                 </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar"
-                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -88,7 +82,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{nbre_commande}}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -100,7 +94,7 @@
         <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">CHIFFRE D'AFFAIRE</h5>
+                <h5 class="card-title">CHIFFRE D'AFFAIRE PAR JOUR</h5>
   
                 <!-- Line Chart -->
                 <canvas id="lineChart" style="max-height: 400px;"></canvas>
@@ -137,7 +131,7 @@
         <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">NOMBRE D'ACHATS</h5>
+                <h5 class="card-title">NOMBRE D'ACHATS PAR CATEGORIE</h5>
   
                 <!-- Bar Chart -->
                 <div id="barChart"></div>
@@ -146,7 +140,7 @@
                   document.addEventListener("DOMContentLoaded", () => {
                     new ApexCharts(document.querySelector("#barChart"), {
                       series: [{
-                        data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+                        data: [{% for categorie in categories.values %} '{{categorie}}', {% endfor %}]
                       }],
                       chart: {
                         type: 'bar',
@@ -162,8 +156,7 @@
                         enabled: false
                       },
                       xaxis: {
-                        categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-                          'United States', 'China', 'Germany'
+                        categories: [{% for categorie in categories.keys %} '{{categorie}}', {% endfor %}
                         ],
                       }
                     }).render();
@@ -175,34 +168,59 @@
             </div>
         </div>  
 
+        
         <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">ETAT DES COMMANDES</h5>
+                <h5 class="card-title">ETATS DES COMMANDES</h5>
   
                 <!-- Pie Chart -->
-                <div id="pieChart"></div>
-  
+                <canvas id="pieChart" style="max-height: 400px;"></canvas>
                 <script>
                   document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#pieChart"), {
-                      series: [44, 55, 13, 43],
-                      chart: {
-                        height: 350,
-                        type: 'pie',
-                        toolbar: {
-                          show: true
-                        }
-                      },
-                      labels: ['En Attente de Traitemnet', 'En Cours de Traitement', 'Livré A Temps', 'Livré en Retard']
-                    }).render();
+                    new Chart(document.querySelector('#pieChart'), {
+                      type: 'pie',
+                      data: { 
+                        labels: [
+                        {% for statut in status.keys %} '{{statut}}', {% endfor %}
+                        ],
+                        datasets: [{
+                          label: 'My First Dataset',
+                          data: [{% for statut in status.values %} '{{statut}}', {% endfor %}],
+                          backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)',
+                            'rgb(255, 0, 0)'
+                          ],
+                          hoverOffset: 4
+                        }]
+                      }
+                    });
                   });
                 </script>
-                <!-- End Pie Chart -->
+                <!-- End Pie CHart -->
   
               </div>
             </div>
         </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">CALCUL MOYENNE</h5>
+
+              <!-- Polar Area Chart -->
+             
+            
+              
+              <!-- End Polar Area Chart -->
+
+            </div>
+          </div>
+        </div>
+       
+        
   
     </div>
 
