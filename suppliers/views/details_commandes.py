@@ -34,6 +34,12 @@ def create(request):
 def store(request):
     if request.method == 'POST':
         form = DetailCommandeForm(request.POST)
+        nom = request.POST['commande']
+        
+        if DetailCommande.objects.filter(commande_id=nom).exists():
+                messages.error(request, 'Un detail_commande avec le même nom de commande existe déjà.')
+                return redirect('/details_commandes')
+
         if form.is_valid():
             form.save()
         messages.success(request, "Order Detail has been saved successfully !")
