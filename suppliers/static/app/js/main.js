@@ -2,16 +2,13 @@
 
 $(function () {
     $("#id_categorie").on("change", function () {
-        var categorie_id = $(this).val();
+        id_categorie = $(this).val();
+        alert(id_categorie);
         $.get(
-            "/get_produits_by_categorie/",
-            {"categorie_id": categorie_id},
+            "/details_commandes/getPrducts",
+            {id_categorie: id_categorie},
             function (data) {
-                var options = '<option value="">---------</option>';
-                data.forEach(function (produit) {
-                    options += '<option value="' + produit.id + '">' + produit.nom + '</option>';
-                });
-                $("#id_produit").html(options);
+                $("#id_produit").html(data);
             }
         );
     });
@@ -21,7 +18,7 @@ $(function () {
   $(function () {
     $("#id_produit").on("change", function () {
       id_produit = $(this).val();
-      // alert(id_produit);
+      alert(id_produit);
       $.get(
         "/details_commande/getUnitPrice",
         {
@@ -35,8 +32,8 @@ $(function () {
   });
   
   $('#id_quantite').on('keyup', function () {
-    var id_quantite = $(this).val();
-    // alert(id_quantite)
+    id_quantite = $(this).val();
+    alert(id_quantite)
     var prix = $('#prix').val();
     var total = id_quantite * prix;
     $('#id_total').val(total);

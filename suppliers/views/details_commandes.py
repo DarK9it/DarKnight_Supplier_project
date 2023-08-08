@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from suppliers.models import DetailCommande
+from suppliers.models import CategorieProduit, Produit
 from suppliers.forms import DetailCommandeForm
 from django.contrib.auth.decorators import  login_required
 
@@ -22,12 +23,15 @@ def index(request):
 @login_required(login_url='/login')
 
 def create(request):
+    assert isinstance(request, HttpRequest)
     form = DetailCommandeForm()
+    categories = CategorieProduit.objects.all()
     return render(
         request, 
         'app/details_commandes/create.html',
         {
-            'form': form
+            'form': form,
+            'categories':categories
         }
     )
 @login_required(login_url='/login')
@@ -83,8 +87,8 @@ def delete(request, id):
 @login_required(login_url='/login')
 
 def getProducts(request):
-    categorie_id = request.GET.get('categorie_id')
-    produits = Produit.objects.filter(categorie_id = categorie_id).order_by('nom')
+    id_categorie= request.GET.get('id_categorie')
+    produits = Produit.objects.filter(categorie_id = id_categorie)
     return render(
         request,
         'app/details_commandes/getProducts.html',
