@@ -10,7 +10,7 @@ STATUT_CHOICES = [
 
 class Commande(models.Model):
 
-    nom = models.CharField(max_length=45, null=True, unique=True)
+    nom = models.CharField(max_length=45, null=True)
     date_commande = models.DateField()
     fournisseur = models.ForeignKey(Fournisseur, on_delete=models.CASCADE)
     statut = models.CharField(max_length=100, choices=STATUT_CHOICES, default='En Attente De Traitement')
